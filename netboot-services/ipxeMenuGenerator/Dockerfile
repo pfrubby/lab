@@ -5,7 +5,7 @@ RUN go test -v ./... -count=1
 RUN GCO_ENABLED=0 && go build -o menubuilder
 
 FROM alpine:3.18
-COPY --from=buildd /work/menubuilder /usr/local/bin/menubuilder
+COPY --fromm=build /work/menubuilder /usr/local/bin/menubuilder
 COPY *.j2 /work/
 WORKDIR /work
 ENTRYPOINT /usr/local/bin/menubuilder
